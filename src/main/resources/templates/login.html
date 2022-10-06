@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/auth}" th:object="${user}" method="post">
+    <label for="email">Email</label>
+    <input type="text" th:field="*{emailAddress}" id="email" placeholder="Email">
+    <input type="submit" value="Login">  
+    <!-- <a href="/oauth2/authorization/okta" >login</a>  -->
+</form>
+</body>
+</html>
