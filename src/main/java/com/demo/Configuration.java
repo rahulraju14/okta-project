@@ -14,7 +14,7 @@ public class Configuration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public Environment env;
 	
-	public static String AUTHORIZATION_BASE_URI = "/oauth2/authorization";
+	public static final String AUTHORIZATION_BASE_URI = "/oauth2/authorization";
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

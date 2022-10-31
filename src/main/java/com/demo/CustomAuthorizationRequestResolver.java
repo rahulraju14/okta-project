@@ -26,9 +26,9 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 
 	private Environment env;
 
-	private static String REGISTRATION_ID = "okta";
-	private static String TOKEN_URI = "/v1/token";
-	private static String AUTHORIZATION_URI = "/v1/authorize";
+	private static final String REGISTRATION_ID = "okta";
+	private static final String TOKEN_URI = "/v1/token";
+	private static final String AUTHORIZATION_URI = "/v1/authorize";
 
 	private static List<String> clients = Arrays.asList(REGISTRATION_ID);
 
@@ -67,9 +67,13 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 	}
 	
 	public ClientRegistration getRegistration(String client) {
-		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
-		String oktaClientId = env.getProperty("okta.oauth2.client-id");
-		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
+//		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
+//		String oktaClientId = env.getProperty("okta.oauth2.client-id");
+//		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
+		
+		String oktaIssuer = "https://login.dev.aws.castandcrew.com/oauth2/aushpbkr23bTIWPAO357";
+		String oktaClientId = "0oakfc9a8knSyVixZ357";
+		String oktaSecretKey = "L5fkfgn5N3XQpllFFCsncyCBvAwPTdv5qI3DZdtm";
 		
 		System.out.println("Okta Issuer: " + oktaIssuer);
 		System.out.println("Client Id: " + oktaClientId);
