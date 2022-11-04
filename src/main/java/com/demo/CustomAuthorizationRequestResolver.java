@@ -67,13 +67,13 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 	}
 	
 	public ClientRegistration getRegistration(String client) {
-		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
-		String oktaClientId = env.getProperty("okta.oauth2.client-id");
-		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
+//		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
+//		String oktaClientId = env.getProperty("okta.oauth2.client-id");
+//		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
 		
-//		String oktaIssuer = "https://login.dev.aws.castandcrew.com/oauth2/aushpbkr23bTIWPAO357";
-//		String oktaClientId = "0oakfc9a8knSyVixZ357";
-//		String oktaSecretKey = "L5fkfgn5N3XQpllFFCsncyCBvAwPTdv5qI3DZdtm";
+		String oktaIssuer = "https://login.dev.aws.castandcrew.com/oauth2/aushpbkr23bTIWPAO357";
+		String oktaClientId = "0oakfc9a8knSyVixZ357";
+		String oktaSecretKey = "L5fkfgn5N3XQpllFFCsncyCBvAwPTdv5qI3DZdtm";
 		
 		System.out.println("Okta Issuer: " + oktaIssuer);
 		System.out.println("Client Id: " + oktaClientId);
