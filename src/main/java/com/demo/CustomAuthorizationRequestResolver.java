@@ -34,7 +34,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 
 	@Autowired
 	HttpSession session;
-	
+
 	public CustomAuthorizationRequestResolver(Environment environment, String requestUri) {
 		this.env = environment;
 		ClientRegistrationRepository clientRepo = getClientRepo();
@@ -43,7 +43,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 
 	@Override
 	public OAuth2AuthorizationRequest resolve(HttpServletRequest request) {
-		System.out.println("Current Request: "+ request.getRequestURI());
+		System.out.println("Current Request: " + request.getRequestURI());
 		OAuth2AuthorizationRequest req = defaultResolver.resolve(request);
 		if (req != null) {
 			Map<String, Object> extraParams = new HashMap<String, Object>();
@@ -65,16 +65,16 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 				.filter(registration -> registration != null).collect(Collectors.toList());
 		return new InMemoryClientRegistrationRepository(registrations);
 	}
-	
+
 	public ClientRegistration getRegistration(String client) {
-//		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
-//		String oktaClientId = env.getProperty("okta.oauth2.client-id");
-//		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
-		
-		String oktaIssuer = "https://login.dev.aws.castandcrew.com/oauth2/aushpbkr23bTIWPAO357";
-		String oktaClientId = "0oakfc9a8knSyVixZ357";
-		String oktaSecretKey = "L5fkfgn5N3XQpllFFCsncyCBvAwPTdv5qI3DZdtm";
-		
+		String oktaIssuer = env.getProperty("okta.oauth2.issuer");
+		String oktaClientId = env.getProperty("okta.oauth2.client-id");
+		String oktaSecretKey = env.getProperty("okta.oauth2.client-secret");
+//		
+//		String oktaIssuer = "https://login.dev.aws.castandcrew.com/oauth2/aushpbkr23bTIWPAO357";
+//		String oktaClientId = "0oakfc9a8knSyVixZ357";
+//		String oktaSecretKey = "L5fkfgn5N3XQpllFFCsncyCBvAwPTdv5qI3DZdtm";
+
 		System.out.println("Okta Issuer: " + oktaIssuer);
 		System.out.println("Client Id: " + oktaClientId);
 		System.out.println("Client Secret Key: " + oktaSecretKey);
@@ -82,15 +82,11 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 		if (oktaClientId == null) {
 			return null;
 		}
-		
-		ClientRegistration clientReg = CommonOAuth2Provider.OKTA.getBuilder(client)
-				.registrationId("okta")
-				.clientId(oktaClientId)
-				.clientSecret(oktaSecretKey)
+
+		ClientRegistration clientReg = CommonOAuth2Provider.OKTA.getBuilder(client).registrationId("okta")
+				.clientId(oktaClientId).clientSecret(oktaSecretKey)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-				.authorizationUri(oktaIssuer + AUTHORIZATION_URI)
-				.tokenUri(oktaIssuer + TOKEN_URI)
-				.build();
+				.authorizationUri(oktaIssuer + AUTHORIZATION_URI).tokenUri(oktaIssuer + TOKEN_URI).build();
 		return clientReg;
 	}
 }
