@@ -29,7 +29,7 @@ public class WelcomeController {
 	HttpSession session;
 	
 	@GetMapping("/login")
-	public String main(User user, Model model) {
+	public String main(User user, Model model) { // Main login view
 		model.addAttribute("message", "Welcome to thymleaf");
 		return "login"; // view
 	}
