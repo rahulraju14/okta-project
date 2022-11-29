@@ -5,8 +5,6 @@ public class User {
 	private String emailAddress;
 
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getEmailAddress() {

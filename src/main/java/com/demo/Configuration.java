@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @SuppressWarnings("deprecation")
 @org.springframework.context.annotation.Configuration
 public class Configuration extends WebSecurityConfigurerAdapter {
-
+	
 	@Autowired
 	public Environment env;
 	
