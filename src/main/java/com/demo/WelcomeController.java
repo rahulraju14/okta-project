@@ -43,6 +43,7 @@ public class WelcomeController {
 	@GetMapping("/homePage")
 	public String main(@AuthenticationPrincipal OidcUser principal, Model model) {
 		LOGGER.debug("User Logged In: {} ", principal.getEmail());
+		System.out.println("User Logged In : "+ principal.getEmail());
 		model.addAttribute("currentUser", principal.getEmail());
 		return "homePage"; // view
 	}
